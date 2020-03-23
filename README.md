@@ -1,0 +1,2 @@
+# ghostpost_frontend
+yes!!!
