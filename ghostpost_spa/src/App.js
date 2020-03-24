@@ -12,20 +12,20 @@ class App extends Component {
   getAllBoastsHandler = () => {
 
     let OnOff = this.state.switch
-    this.setState({switch: !OnOff})
-
     let meth_head = {
       method: "GET",
       headers: {
         'Content-type': 'application/json'
       }
     }
+    
     fetch( API_HOST + 'boastroast/', meth_head)
     .then(response => response.json())
     .then(responseData => {
       console.log(responseData)
       this.setState({
-        status: [responseData]
+        status: [responseData],
+        switch: !OnOff
       })
     })
     .catch( error => {
