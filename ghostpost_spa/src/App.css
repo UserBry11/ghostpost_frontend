@@ -10,6 +10,10 @@ body {
   background-color: rgb(179, 236, 179);
 }
 
+.boasts {
+  background-color: rgb(211, 161, 161);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
