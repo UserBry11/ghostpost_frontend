@@ -7,7 +7,6 @@ class App extends Component {
   state = {
     datas: [],
     switchA: false,
-    switch2: true,
     switchB: true,
     switchR: false,
   }
@@ -22,7 +21,7 @@ class App extends Component {
     this.setState({ switchR: !result })
   }
 
-  getAllBoastsHandler = () => {
+  allItemsButton = () => {
 
     let OnOff = this.state.switchA
     this.setState({switchA: !OnOff})
@@ -47,11 +46,6 @@ class App extends Component {
     // })
   }
 
-  
-  boastroastHandler = () => {
-    let result = this.state.switch2
-    this.setState( { switch2: !result })
-  }
 
   // createBoastHandler = () => {
   //   let meth_head = {
@@ -76,7 +70,7 @@ class App extends Component {
     .then(responseData => {
       console.log(responseData)
       this.setState({
-        datas: [responseData],
+        datas: responseData,
       })
     })
     .catch( error => {
@@ -95,30 +89,40 @@ class App extends Component {
 
         <section className="all">
           <p>
-            <button onClick={this.getAllBoastsHandler
+            <button onClick={this.allItemsButton
             }>{!this.state.switchA ? "Expand All Posts" : "Collapse All Posts"}</button>
           </p>
 
             {this.state.switchA ?
-              this.state.datas.map( data_obj => 
-
-                Object.keys(data_obj).map( function(key){
-
-                  let value = data_obj[key]
-
-                  return (
-                      <ul key={value.id}>title: {value.title}
-                        <li>id: {value.id}</li>
-                        <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
-                        <li>Content: {value.content}</li>
-                        <li>Upvotes: {value.upvotes}</li>
-                        <li>Downvotes: {value.downvotes}</li>
-                        <li>Post-Date: {value.post_date}</li>
-                      </ul>
-                    )
-                  }
+              this.state.datas.map( value => 
+                  <ul key={value.id}>title: {value.title}
+                    <li>id: {value.id}</li>
+                    <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
+                    <li>Content: {value.content}</li>
+                    <li>Upvotes: {value.upvotes}</li>
+                    <li>Downvotes: {value.downvotes}</li>
+                    <li>Post-Date: {value.post_date}</li>
+                  </ul>
                 )
-              )
+              // this.state.datas.map( data_obj => 
+
+              //   Object.keys(data_obj).map( function(key){
+
+              //     let value = data_obj[key]
+
+              //     return (
+              //         <ul key={value.id}>title: {value.title}
+              //           <li>id: {value.id}</li>
+              //           <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
+              //           <li>Content: {value.content}</li>
+              //           <li>Upvotes: {value.upvotes}</li>
+              //           <li>Downvotes: {value.downvotes}</li>
+              //           <li>Post-Date: {value.post_date}</li>
+              //         </ul>
+              //       )
+              //     }
+              //   )
+              // )
               : 
               <div>
                 Nothing here. Click Button!
@@ -141,9 +145,7 @@ class App extends Component {
                   </button>
                   <h3>Boasts</h3>
                   {
-                    this.state.datas.map(outer =>
-                        outer.filter(inner => inner.boolean === true ).map(value =>
-
+                    this.state.datas.filter( condition => condition.boolean === true ).map(value =>
                               <ul key={value.id}>title: {value.title}
                                 <li>id: {value.id}</li>
                                 <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
@@ -152,8 +154,20 @@ class App extends Component {
                                 <li>Downvotes: {value.downvotes}</li>
                                 <li>Post-Date: {value.post_date}</li>
                               </ul>
-                          )
                       )
+                    // this.state.datas.map(outer =>
+                    //     outer.filter(inner => inner.boolean === true ).map(value =>
+
+                    //           <ul key={value.id}>title: {value.title}
+                    //             <li>id: {value.id}</li>
+                    //             <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
+                    //             <li>Content: {value.content}</li>
+                    //             <li>Upvotes: {value.upvotes}</li>
+                    //             <li>Downvotes: {value.downvotes}</li>
+                    //             <li>Post-Date: {value.post_date}</li>
+                    //           </ul>
+                    //       )
+                    //   )
                   }
                 </div>
             }
@@ -167,8 +181,7 @@ class App extends Component {
             </button>
             <h3>Roasts</h3>
             {
-              this.state.datas.map(outer =>
-                outer.filter(inner => inner.boolean === false).map(value =>
+              this.state.datas.filter(condition => condition.boolean === false).map(value =>
                   <ul key={value.id}>title: {value.title}
                     <li>id: {value.id}</li>
                     <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
@@ -176,9 +189,22 @@ class App extends Component {
                     <li>Upvotes: {value.upvotes}</li>
                     <li>Downvotes: {value.downvotes}</li>
                     <li>Post-Date: {value.post_date}</li>
-                  </ul>
-                  )
+                  </ul>              
                 )
+
+
+              // this.state.datas.map(outer =>
+              //   outer.filter(inner => inner.boolean === false).map(value =>
+              //     <ul key={value.id}>title: {value.title}
+              //       <li>id: {value.id}</li>
+              //       <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
+              //       <li>Content: {value.content}</li>
+              //       <li>Upvotes: {value.upvotes}</li>
+              //       <li>Downvotes: {value.downvotes}</li>
+              //       <li>Post-Date: {value.post_date}</li>
+              //     </ul>
+              //     )
+              //   )
             }
 
           </div>
@@ -199,7 +225,7 @@ class Roasts extends Component {
   render() {
     return (
       <section>
-        Happy
+        Footnotes
       </section>
     )
   }
