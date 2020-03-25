@@ -9,11 +9,17 @@ class App extends Component {
     switchA: false,
     switch2: true,
     switchB: true,
+    switchR: false,
   }
 
   boastOnlyButton = () => {
     let result = this.state.switchB
     this.setState({ switchB: !result })
+  }
+
+  roastsOnlyButton = () => {
+    let result = this.state.switchR;
+    this.setState({ switchR: !result })
   }
 
   getAllBoastsHandler = () => {
@@ -46,7 +52,7 @@ class App extends Component {
     let result = this.state.switch2
     this.setState( { switch2: !result })
   }
-  
+
   // createBoastHandler = () => {
   //   let meth_head = {
   //     method: "POST",
@@ -85,15 +91,14 @@ class App extends Component {
         <h1>Hello World, I'm Ghostpost!</h1>
         <h3>powered by React!</h3>
         <div>Requests sent to: {API_HOST}</div>
+        <h3>Ordered by Post-Date:</h3>
 
-        <section class="all">
+        <section className="all">
           <p>
             <button onClick={this.getAllBoastsHandler
             }>{!this.state.switchA ? "Expand All Posts" : "Collapse All Posts"}</button>
           </p>
 
-          <h3>Ordered by Post-Date:</h3>
-          <p>
             {this.state.switchA ?
               this.state.datas.map( data_obj => 
 
@@ -102,8 +107,7 @@ class App extends Component {
                   let value = data_obj[key]
 
                   return (
-                    <div key={value.id}>title: {value.title}
-                      <ul>
+                      <ul key={value.id}>title: {value.title}
                         <li>id: {value.id}</li>
                         <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                         <li>Content: {value.content}</li>
@@ -111,7 +115,6 @@ class App extends Component {
                         <li>Downvotes: {value.downvotes}</li>
                         <li>Post-Date: {value.post_date}</li>
                       </ul>
-                    </div>
                     )
                   }
                 )
@@ -121,11 +124,10 @@ class App extends Component {
                 Nothing here. Click Button!
               </div>
             }
-          </p>
 
         </section>
 
-        <section class="boasts">
+        <section className="boasts">
 
             {this.state.switchB ?
 
@@ -142,8 +144,7 @@ class App extends Component {
                     this.state.datas.map(outer =>
                         outer.filter(inner => inner.boolean === true ).map(value =>
 
-                            <div key={value.id}>title: {value.title}
-                              <ul>
+                              <ul key={value.id}>title: {value.title}
                                 <li>id: {value.id}</li>
                                 <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                                 <li>Content: {value.content}</li>
@@ -151,7 +152,6 @@ class App extends Component {
                                 <li>Downvotes: {value.downvotes}</li>
                                 <li>Post-Date: {value.post_date}</li>
                               </ul>
-                            </div>
                           )
                       )
                   }
@@ -159,23 +159,47 @@ class App extends Component {
             }
       </section>
 
+      <section className="roasts">
+          {this.state.switchR ?
+          <div>
+            <button onClick={this.roastsOnlyButton}>
+              clear ROASTS :^(
+            </button>
+            <h3>Roasts</h3>
+            {
+              this.state.datas.map(outer =>
+                outer.filter(inner => inner.boolean === false).map(value =>
+                  <ul key={value.id}>title: {value.title}
+                    <li>id: {value.id}</li>
+                    <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
+                    <li>Content: {value.content}</li>
+                    <li>Upvotes: {value.upvotes}</li>
+                    <li>Downvotes: {value.downvotes}</li>
+                    <li>Post-Date: {value.post_date}</li>
+                  </ul>
+                  )
+                )
+            }
+
+          </div>
+            :
+          <button onClick={this.roastsOnlyButton}>
+            for ROASTS :^(
+          </button>
+          }
+      </section>
+      <Roasts/>
+
       </React.Fragment>
     )
   }
 }
 
-class Boasts extends Component {
+class Roasts extends Component {
   render() {
     return (
       <section>
-          {
-            // this.props.next.filter(each => each.boolean === true ).map( todo => <div>
-            //   {todo.post_date}
-            //   nooo
-            // </div>
-            //   )
-          }
-
+        Happy
       </section>
     )
   }

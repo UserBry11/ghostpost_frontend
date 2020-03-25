@@ -14,6 +14,10 @@ body {
   background-color: rgb(211, 161, 161);
 }
 
+.roasts {
+  background-color: rgb(130, 228, 228);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
