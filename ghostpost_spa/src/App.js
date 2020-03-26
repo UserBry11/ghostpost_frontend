@@ -63,6 +63,28 @@ class App extends Component {
     .catch(error => console.log("Error: ", error))
   }
 
+  postPostButton = () => {
+      let data = {
+        "title": "Maximum1",
+        "boolean": false,
+        "content": "Maximum1",
+        "upvotes": 1,
+        "downvotes": 0,
+        "post_date": "2020-02-12T23:06:08Z"
+      }
+
+      let meth_head = {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      }
+      fetch( API_HOST + 'boastroast/', meth_head)
+      .then(response => response.json())
+      .then(responseData => console.log(responseData))
+  }
+
   // createBoastHandler = () => {
   //   let meth_head = {
   //     method: "POST",
@@ -104,16 +126,26 @@ class App extends Component {
           crossorigin="anonymous"
         />
         <div className="container">
-          <header className="p-3 mb-2 bg-light shadow rounded text-center">
-            <h1>Hello World, I'm Ghostpost!</h1>
-            <h3>powered by React & Django!</h3>
-            <h4>Developer: Bryan Fernandez</h4>
-            <div><strong>Client-side: </strong>React.js</div>
-            <div><strong>Server-side: </strong>Django-Rest-Framework</div>
-            <div>Requests sent to: {API_HOST}</div>
+          <header className="row p-3 mb-2 bg-light shadow rounded text-center">
+            <div className="col align-self-end">
+
+              <button className="btn btn-info">Create Post</button>
+            </div>
+            {/* <PostForm/> */}
+            <div className="col">
+              <h1>Hello World, I'm Ghostpost!</h1>
+              <h3>powered by React & Django!</h3>
+              <div><strong>Client-side: </strong>React.js</div>
+              <div><strong>Server-side: </strong>Django-Rest-Framework</div>
+              <div>Requests sent to: {API_HOST}</div>
+            </div>
+
+            <div className="col align-self-end">
+              <h4>Developer: Bryan Fernandez</h4>
+            </div>
           </header>
 
-          <div className="p-3 mb-2 bg-light shadow rounded row shadow rounded">
+          <div className="row p-3 mb-2 bg-light shadow rounded shadow rounded">
             
             <section className="all col-sm">
                 {this.state.switchA ?
@@ -131,13 +163,13 @@ class App extends Component {
                     <h3>All items</h3>
                     {
                       this.state.datas.map(value =>
-                          <ul key={value.id}><strong>title: </strong>{value.title}
-                            <li>id: {value.id}</li>
-                            <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
-                            <li>Content: {value.content}</li>
-                            <li>Upvotes: {value.upvotes}</li>
-                            <li>Downvotes: {value.downvotes}</li>
-                            <li>Post-Date: {value.post_date}</li>
+                          <ul key={value.id} className="list-group"><strong>title: </strong>{value.title}
+                            <li className="list-group-item list-group-item-secondary">id: {value.id}</li>
+                            <li className="list-group-item list-group-item-primary">{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
+                            <li className="list-group-item list-group-item-secondary">Content: {value.content}</li>
+                            <li className="list-group-item list-group-item-primary">Upvotes: {value.upvotes}</li>
+                            <li className="list-group-item list-group-item-secondary">Downvotes: {value.downvotes}</li>
+                            <li className="list-group-item list-group-item-primary">Post-Date: {value.post_date}</li>
                           </ul> 
                         )
                     }
@@ -161,14 +193,14 @@ class App extends Component {
                       <h3>Boasts</h3>
                       {
                         this.state.datas.filter( condition => condition.boolean === true ).map(value =>
-                            <ul key={value.id}><strong>title: </strong>{value.title}
-                              <li>id: {value.id}</li>
-                              <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
-                              <li>Content: {value.content}</li>
-                              <li>Upvotes: {value.upvotes}</li>
-                              <li>Downvotes: {value.downvotes}</li>
-                              <li>Post-Date: {value.post_date}</li>
-                            </ul>
+                          <ul key={value.id} className="list-group"><strong>title: </strong>{value.title}
+                            <li className="list-group-item list-group-item-success">id: {value.id}</li>
+                            <li className="list-group-item list-group-item-secondary">{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
+                            <li className="list-group-item list-group-item-success">Content: {value.content}</li>
+                            <li className="list-group-item list-group-item-secondary">Upvotes: {value.upvotes}</li>
+                            <li className="list-group-item list-group-item-success">Downvotes: {value.downvotes}</li>
+                            <li className="list-group-item list-group-item-success">Post-Date: {value.post_date}</li>
+                          </ul> 
                           )
                       }
                     </div>
@@ -184,14 +216,14 @@ class App extends Component {
                     <h3>Roasts</h3>
                     {
                       this.state.datas.filter(condition => condition.boolean === false).map(value =>
-                          <ul key={value.id}><strong>title: </strong>{value.title}
-                            <li>id: {value.id}</li>
-                            <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
-                            <li>Content: {value.content}</li>
-                            <li>Upvotes: {value.upvotes}</li>
-                            <li>Downvotes: {value.downvotes}</li>
-                            <li>Post-Date: {value.post_date}</li>
-                          </ul>              
+                        <ul key={value.id} className="list-group"><strong>title: </strong>{value.title}
+                          <li className="list-group-item list-group-item">id: {value.id}</li>
+                          <li className="list-group-item list-group-item-primary">{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
+                          <li className="list-group-item list-group-item">Content: {value.content}</li>
+                          <li className="list-group-item list-group-item-info">Upvotes: {value.upvotes}</li>
+                          <li className="list-group-item list-group-item">Downvotes: {value.downvotes}</li>
+                          <li className="list-group-item list-group-item-danger">Post-Date: {value.post_date}</li>
+                      </ul>            
                         )
                     }
                   </div>
@@ -233,14 +265,14 @@ class Popular extends Component {
             <div><strong>from highest-rated 2 lowest</strong></div>
             {
               this.props.popularData.map(value =>
-                <ul key={value.id}><strong>title: </strong>{value.title}
-                  <li>id: {value.id}</li>
-                  <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
-                  <li>Content: {value.content}</li>
-                  <li>Upvotes: {value.upvotes}</li>
-                  <li>Downvotes: {value.downvotes}</li>
-                  <li>Post-Date: {value.post_date}</li>
-                </ul>              
+                <ul key={value.id} className="list-group"><strong>title: </strong>{value.title}
+                  <li className="list-group-item list-group-item-secondary">id: {value.id}</li>
+                  <li className="list-group-item list-group-item-primary">{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
+                  <li className="list-group-item list-group-item-secondary">Content: {value.content}</li>
+                  <li className="list-group-item list-group-item-info">Upvotes: {value.upvotes}</li>
+                  <li className="list-group-item list-group-item-secondary">Downvotes: {value.downvotes}</li>
+                  <li className="list-group-item list-group-item-danger">Post-Date: {value.post_date}</li>
+              </ul>               
               )
 
             }
@@ -249,6 +281,37 @@ class Popular extends Component {
       </section>
     )
   }
+}
+
+
+class PostForm extends Component {
+    render() {
+      return (
+        <React.Fragment>
+            <h1>Make a Post!</h1>
+            <form>
+                <label>title: </label>
+                <input></input>
+                
+                <label>Boast? </label>
+                <input></input>
+
+                <label>Content: </label>
+                <input></input>
+
+                <label>Upvote: </label>
+                <input></input>
+
+                <label>Downvote: </label>
+                <input></input>
+
+                <button type="submit">Post!</button>
+
+
+            </form>
+        </React.Fragment>
+      )
+    }
 }
 
 export default App;
