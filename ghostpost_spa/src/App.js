@@ -106,12 +106,15 @@ class App extends Component {
         <div className="container">
           <header className="p-3 mb-2 bg-light shadow rounded text-center">
             <h1>Hello World, I'm Ghostpost!</h1>
-            <h3>powered by React!</h3>
+            <h3>powered by React & Django!</h3>
+            <h4>Developer: Bryan Fernandez</h4>
+            <div><strong>Client-side: </strong>React.js</div>
+            <div><strong>Server-side: </strong>Django-Rest-Framework</div>
             <div>Requests sent to: {API_HOST}</div>
-            <h3>Ordered by Post-Date</h3>
           </header>
 
           <div className="p-3 mb-2 bg-light shadow rounded row shadow rounded">
+            
             <section className="all col-sm">
                 {this.state.switchA ?
                   <div>
@@ -128,7 +131,7 @@ class App extends Component {
                     <h3>All items</h3>
                     {
                       this.state.datas.map(value =>
-                          <ul key={value.id}>title: {value.title}
+                          <ul key={value.id}><strong>title: </strong>{value.title}
                             <li>id: {value.id}</li>
                             <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                             <li>Content: {value.content}</li>
@@ -158,7 +161,7 @@ class App extends Component {
                       <h3>Boasts</h3>
                       {
                         this.state.datas.filter( condition => condition.boolean === true ).map(value =>
-                            <ul key={value.id}>title: {value.title}
+                            <ul key={value.id}><strong>title: </strong>{value.title}
                               <li>id: {value.id}</li>
                               <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                               <li>Content: {value.content}</li>
@@ -181,7 +184,7 @@ class App extends Component {
                     <h3>Roasts</h3>
                     {
                       this.state.datas.filter(condition => condition.boolean === false).map(value =>
-                          <ul key={value.id}>title: {value.title}
+                          <ul key={value.id}><strong>title: </strong>{value.title}
                             <li>id: {value.id}</li>
                             <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                             <li>Content: {value.content}</li>
@@ -227,17 +230,17 @@ class Popular extends Component {
           <div>
             <button onClick={this.props.popularItemsButton}>clear Popular items</button>
             <h3>Popular items</h3>
-            <div> (from highest-rated 2 lowest)</div>
+            <div><strong>from highest-rated 2 lowest</strong></div>
             {
               this.props.popularData.map(value =>
-                <ul key={value.id}>title: {value.title}
+                <ul key={value.id}><strong>title: </strong>{value.title}
                   <li>id: {value.id}</li>
                   <li>{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                   <li>Content: {value.content}</li>
                   <li>Upvotes: {value.upvotes}</li>
                   <li>Downvotes: {value.downvotes}</li>
                   <li>Post-Date: {value.post_date}</li>
-              </ul>              
+                </ul>              
               )
 
             }
