@@ -2,8 +2,8 @@
   text-align: center;
 }
 
-body {
-  background-color: rgb(209, 233, 255);
+#root, html {
+  background-color: rgb(223, 229, 235);
 }
 
 .all {
@@ -18,6 +18,9 @@ body {
   background-color: rgb(130, 228, 228);
 }
 
+.popular {
+  background-color: rgb(228, 187, 84);
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
