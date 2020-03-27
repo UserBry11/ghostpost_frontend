@@ -21,6 +21,15 @@
 .popular {
   background-color: rgb(228, 187, 84);
 }
+
+.post {
+  color: white;
+}
+
+.post:hover {
+  color: rgb(176, 197, 81);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
