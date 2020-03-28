@@ -9,8 +9,8 @@ class Home extends Component {
     datas: [],
     popularData: [],
     switchA: false,
-    switchB: !true,
-    switchR: !false,
+    switchB: true,
+    switchR: false,
     switchP: !true,
     id_value: '',
     // now: new Date()
@@ -194,9 +194,9 @@ class Home extends Component {
                     </div>
                     :
                     <div className="shadow">
-                      {/* <button onClick={this.boastOnlyButton}>
+                      <button onClick={this.boastOnlyButton}>
                         clear BOASTS :^D
-                      </button> */}
+                      </button>
                       <h3>Boasts</h3>
                       {
                         this.state.datas.filter( condition => condition.boolean === true ).map(value =>
@@ -224,9 +224,9 @@ class Home extends Component {
             <section className="roasts col-sm text-center">
                 {this.state.switchR ?
                   <div className="shadow">
-                    {/* <button onClick={this.roastsOnlyButton}>
+                    <button onClick={this.roastsOnlyButton}>
                       clear ROASTS :^(
-                    </button> */}
+                    </button>
                     <h3>Roasts</h3>
                     {
                       this.state.datas.filter(condition => condition.boolean === false).map(value =>
