@@ -63,8 +63,6 @@ class Home extends Component {
     })
     .catch(error => console.log("Error: ", error))
     
-    // let result = this.state.switchP
-    // this.setState({ switchP: !result })
   }
 
   handleUpvote = id => () => {
