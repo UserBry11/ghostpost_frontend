@@ -51,7 +51,7 @@ class Home extends Component {
     this.setState({ switchR: !result })
   }
 
-  popularItemsButton = () => {
+  getPopularItems = () => {
   
     fetch( API_HOST + 'boastroast/popular/')
     .then(response => response.json())
@@ -68,6 +68,8 @@ class Home extends Component {
   }
 
   handleUpvote = id => () => {
+    this.getPopularItems()
+
     fetch(API_HOST + 'boastroast/upvote/?id=' + String(id))
     .then(response => response.json())
     .then(responseData => {
@@ -76,10 +78,12 @@ class Home extends Component {
     })
     .catch(error => console.log(error))
 
-    this.popularItemsButton()
+    this.getPopularItems()
   }
 
   handleDownvote = id => () => {
+    this.getPopularItems()
+
     fetch(API_HOST + 'boastroast/downvote/?id=' + String(id))
     .then(response => response.json())
     .then(responseData => {
@@ -89,7 +93,7 @@ class Home extends Component {
     )
     .catch( error => console.log(error))
 
-    this.popularItemsButton()
+    this.getPopularItems()
   }
 
   componentDidMount(){ 
@@ -105,7 +109,7 @@ class Home extends Component {
       console.log("Error: ", error)
     })
 
-    this.popularItemsButton()
+    this.getPopularItems()
   }
 
   render() {
@@ -255,7 +259,7 @@ class Home extends Component {
             </section>
         
             <Popular
-              popularItemsButton={this.popularItemsButton}
+              popularItemsButton={this.getPopularItems}
               switchP={this.state.switchP}
               popularData={this.state.popularData}
               handleUpvote={this.handleUpvote}
@@ -280,7 +284,7 @@ class Popular extends Component {
           : 
           <div className="shadow">
             {/* <button onClick={this.props.popularItemsButton}>clear Popular items</button> */}
-            <h3>Popular items</h3>
+            <h3>Popular feed</h3>
             {
               this.props.popularData.map(value =>
                 <p className="card">
@@ -289,10 +293,10 @@ class Popular extends Component {
                   <li className="list-group-item list-group-item-secondary">id: {value.id}</li>
                   <li className="list-group-item list-group-item-primary">{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                   <li className="list-group-item list-group-item-secondary">Content: {value.content}</li>
-                  <li className="list-group-item list-group-item-danger">
+                  {/* <li className="list-group-item list-group-item-danger">
                     <button onClick={this.props.handleUpvote(value.id)} className="btn btn-primary shadow">Upvote</button>
                     <button onClick={this.props.handleDownvote(value.id)} className="btn btn-danger shadow">Downvote</button>
-                  </li>
+                  </li> */}
                   <li className="list-group-item list-group-item-primary">Upvotes: {value.upvotes}</li>
                   <li className="list-group-item list-group-item-secondary">Downvotes: {value.downvotes}</li>
                   <li className="list-group-item list-group-item-success">Post-Date: {value.post_date}</li>

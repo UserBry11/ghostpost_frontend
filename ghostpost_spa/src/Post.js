@@ -115,8 +115,11 @@ class Post extends Component {
                                     onChange={this.handleBooleanChange}
                                 />
                                 <label className="form-check-label" htmlFor="gridCheck1">
-                                Check for Boast, Uncheck for Roast
+                                Check to Roast
                                 </label>
+                                <div>
+                                    <small>(Default: Boast)</small>
+                                </div>
                             </div>
                         </div>
                     </div>
