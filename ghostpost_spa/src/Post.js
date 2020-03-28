@@ -37,6 +37,7 @@ class Post extends Component {
         .then(response => response.json())
         .then(responseData => {
             console.log(responseData)
+            this.props.history.push("/")
             }
         )
         .catch(error => { 
@@ -76,6 +77,7 @@ class Post extends Component {
                                 type="text"
                                 className="form-control shadow"
                                 id="inputEmail3"
+                                placeholder="30 chars or less"
                                 name="title"
                                 maxLength="30"
                                 onChange={this.handleChange}
@@ -90,6 +92,7 @@ class Post extends Component {
                             <textarea
                                 className="form-control shadow"
                                 id="inputPassword3 id_content"
+                                placeholder="Content"
                                 cols="40" 
                                 rows="10" 
                                 name="content" 

@@ -8,8 +8,21 @@ class App extends Component {
       return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route path="/post" component={Post}/>
+                <Route
+                  exact path={'/'} render={
+                    props => (
+                      <Home 
+                        // {...props} 
+                      />)
+                  }
+                />
+                <Route path="/post" render={
+                    props => (
+                      <Post
+                        {...props}
+                      />)
+                  }
+                />
             </Switch>
         </BrowserRouter>
       )

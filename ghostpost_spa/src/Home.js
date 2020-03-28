@@ -11,7 +11,7 @@ class Home extends Component {
     switchA: false,
     switchB: !true,
     switchR: !false,
-    switchP: true,
+    switchP: !true,
     id_value: '',
     // now: new Date()
   }
@@ -56,15 +56,15 @@ class Home extends Component {
     fetch( API_HOST + 'boastroast/popular/')
     .then(response => response.json())
     .then(responseData => {
-      console.log('responseData', responseData)
+      console.log(responseData)
       this.setState({
         popularData: responseData,
       })
     })
     .catch(error => console.log("Error: ", error))
     
-    let result = this.state.switchP
-    this.setState({ switchP: !result })
+    // let result = this.state.switchP
+    // this.setState({ switchP: !result })
   }
 
   handleUpvote = id => () => {
@@ -75,7 +75,8 @@ class Home extends Component {
       this.setState({ datas: responseData})
     })
     .catch(error => console.log(error))
-    this.setState({ id_value: id})
+
+    this.popularItemsButton()
   }
 
   handleDownvote = id => () => {
@@ -87,18 +88,12 @@ class Home extends Component {
       }  
     )
     .catch( error => console.log(error))
-    // this.setState({ error: !this.state.error})
+
+    this.popularItemsButton()
   }
 
   componentDidMount(){ 
-    let meth_head = {
-      method: "GET",
-      headers: {
-        'Content-type': 'application/json'
-      }
-    }
-
-    fetch( API_HOST + 'boastroast/', meth_head)
+    fetch( API_HOST + 'boastroast/')
     .then(response => response.json())
     .then(responseData => {
       console.log(responseData)
@@ -109,6 +104,8 @@ class Home extends Component {
     .catch( error => {
       console.log("Error: ", error)
     })
+
+    this.popularItemsButton()
   }
 
   render() {
@@ -155,10 +152,10 @@ class Home extends Component {
                     <h3>Click to Expand!</h3>
                   </div>
                   :
-                  <div>
-                    <button onClick={this.allItemsButton}>
+                  <div className="shadow">
+                    {/* <button onClick={this.allItemsButton}>
                       clear All items
-                    </button>
+                    </button> */}
                     <h3>All items</h3>
                     {
                       this.state.datas.map(value =>
@@ -169,8 +166,8 @@ class Home extends Component {
                             <li className="list-group-item list-group-item-primary">{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                             <li className="list-group-item list-group-item-secondary">Content: {value.content}</li>
                             <li className="list-group-item list-group-item-danger">
-                              <button onClick={this.handleUpvote(value.id)} className="btn btn-primary">Upvote</button>
-                              <button onClick={this.handleDownvote(value.id)} className="btn btn-danger">Downvote</button>
+                              <button onClick={this.handleUpvote(value.id)} className="btn btn-primary shadow">Upvote</button>
+                              <button onClick={this.handleDownvote(value.id)} className="btn btn-danger shadow">Downvote</button>
                             </li>
                             <li className="list-group-item list-group-item-primary">Upvotes: {value.upvotes}</li>
                             <li className="list-group-item list-group-item-secondary">Downvotes: {value.downvotes}</li>
@@ -192,10 +189,10 @@ class Home extends Component {
                       <h3>:^D</h3>
                     </div>
                     :
-                    <div>
-                      <button onClick={this.boastOnlyButton}>
+                    <div className="shadow">
+                      {/* <button onClick={this.boastOnlyButton}>
                         clear BOASTS :^D
-                      </button>
+                      </button> */}
                       <h3>Boasts</h3>
                       {
                         this.state.datas.filter( condition => condition.boolean === true ).map(value =>
@@ -206,8 +203,8 @@ class Home extends Component {
                             <li className="list-group-item list-group-item-primary">{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                             <li className="list-group-item list-group-item-secondary">Content: {value.content}</li>
                             <li className="list-group-item list-group-item-danger">
-                              <button onClick={this.handleUpvote(value.id)} className="btn btn-primary">Upvote</button>
-                              <button onClick={this.handleDownvote(value.id)} className="btn btn-danger">Downvote</button>
+                              <button onClick={this.handleUpvote(value.id)} className="btn btn-primary shadow">Upvote</button>
+                              <button onClick={this.handleDownvote(value.id)} className="btn btn-danger shadow">Downvote</button>
                             </li>
                             <li className="list-group-item list-group-item-primary">Upvotes: {value.upvotes}</li>
                             <li className="list-group-item list-group-item-secondary">Downvotes: {value.downvotes}</li>
@@ -222,10 +219,10 @@ class Home extends Component {
 
             <section className="roasts col-sm text-center">
                 {this.state.switchR ?
-                  <div>
-                    <button onClick={this.roastsOnlyButton}>
+                  <div className="shadow">
+                    {/* <button onClick={this.roastsOnlyButton}>
                       clear ROASTS :^(
-                    </button>
+                    </button> */}
                     <h3>Roasts</h3>
                     {
                       this.state.datas.filter(condition => condition.boolean === false).map(value =>
@@ -236,8 +233,8 @@ class Home extends Component {
                           <li className="list-group-item list-group-item-primary">{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                           <li className="list-group-item list-group-item-secondary">Content: {value.content}</li>
                           <li className="list-group-item list-group-item-danger">
-                            <button onClick={this.handleUpvote(value.id)} className="btn btn-primary">Upvote</button>
-                            <button onClick={this.handleDownvote(value.id)} className="btn btn-danger">Downvote</button>
+                            <button onClick={this.handleUpvote(value.id)} className="btn btn-primary shadow">Upvote</button>
+                            <button onClick={this.handleDownvote(value.id)} className="btn btn-danger shadow">Downvote</button>
                           </li>
                           <li className="list-group-item list-group-item-primary">Upvotes: {value.upvotes}</li>
                           <li className="list-group-item list-group-item-secondary">Downvotes: {value.downvotes}</li>
@@ -281,8 +278,8 @@ class Popular extends Component {
             <h3>Populate!</h3>
           </div>
           : 
-          <div>
-            <button onClick={this.props.popularItemsButton}>clear Popular items</button>
+          <div className="shadow">
+            {/* <button onClick={this.props.popularItemsButton}>clear Popular items</button> */}
             <h3>Popular items</h3>
             {
               this.props.popularData.map(value =>
@@ -293,8 +290,8 @@ class Popular extends Component {
                   <li className="list-group-item list-group-item-primary">{value.boolean ? 'Boast :^D' : 'Roast :^('}</li>
                   <li className="list-group-item list-group-item-secondary">Content: {value.content}</li>
                   <li className="list-group-item list-group-item-danger">
-                    <button onClick={this.props.handleUpvote(value.id)} className="btn btn-primary">Upvote</button>
-                    <button onClick={this.props.handleDownvote(value.id)} className="btn btn-danger">Downvote</button>
+                    <button onClick={this.props.handleUpvote(value.id)} className="btn btn-primary shadow">Upvote</button>
+                    <button onClick={this.props.handleDownvote(value.id)} className="btn btn-danger shadow">Downvote</button>
                   </li>
                   <li className="list-group-item list-group-item-primary">Upvotes: {value.upvotes}</li>
                   <li className="list-group-item list-group-item-secondary">Downvotes: {value.downvotes}</li>
