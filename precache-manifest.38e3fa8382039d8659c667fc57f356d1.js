@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7e77024deffa573cb5be6db5969e8182",
+    "revision": "8c7e9694a0f8e999126568171467cc9b",
     "url": "/ghostpost_frontend/index.html"
   },
   {
-    "revision": "24da7353eb26124cfeca",
+    "revision": "9dbfbc8b90f82126a5ee",
     "url": "/ghostpost_frontend/static/css/main.f313fe98.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ghostpost_frontend/static/js/2.1165c99e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "24da7353eb26124cfeca",
-    "url": "/ghostpost_frontend/static/js/main.9ca39532.chunk.js"
+    "revision": "9dbfbc8b90f82126a5ee",
+    "url": "/ghostpost_frontend/static/js/main.d39376b1.chunk.js"
   },
   {
     "revision": "131c08b7e7256a696e7f",

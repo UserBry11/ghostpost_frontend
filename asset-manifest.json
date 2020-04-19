@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ghostpost_frontend/static/css/main.f313fe98.chunk.css",
-    "main.js": "/ghostpost_frontend/static/js/main.9ca39532.chunk.js",
-    "main.js.map": "/ghostpost_frontend/static/js/main.9ca39532.chunk.js.map",
+    "main.js": "/ghostpost_frontend/static/js/main.d39376b1.chunk.js",
+    "main.js.map": "/ghostpost_frontend/static/js/main.d39376b1.chunk.js.map",
     "runtime-main.js": "/ghostpost_frontend/static/js/runtime-main.fe806b1c.js",
     "runtime-main.js.map": "/ghostpost_frontend/static/js/runtime-main.fe806b1c.js.map",
     "static/js/2.1165c99e.chunk.js": "/ghostpost_frontend/static/js/2.1165c99e.chunk.js",
     "static/js/2.1165c99e.chunk.js.map": "/ghostpost_frontend/static/js/2.1165c99e.chunk.js.map",
     "index.html": "/ghostpost_frontend/index.html",
-    "precache-manifest.ccdd4f882b2a2ee1d8fa9abcf958052b.js": "/ghostpost_frontend/precache-manifest.ccdd4f882b2a2ee1d8fa9abcf958052b.js",
+    "precache-manifest.38e3fa8382039d8659c667fc57f356d1.js": "/ghostpost_frontend/precache-manifest.38e3fa8382039d8659c667fc57f356d1.js",
     "service-worker.js": "/ghostpost_frontend/service-worker.js",
     "static/css/main.f313fe98.chunk.css.map": "/ghostpost_frontend/static/css/main.f313fe98.chunk.css.map",
     "static/js/2.1165c99e.chunk.js.LICENSE.txt": "/ghostpost_frontend/static/js/2.1165c99e.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.fe806b1c.js",
     "static/js/2.1165c99e.chunk.js",
     "static/css/main.f313fe98.chunk.css",
-    "static/js/main.9ca39532.chunk.js"
+    "static/js/main.d39376b1.chunk.js"
   ]
 }
